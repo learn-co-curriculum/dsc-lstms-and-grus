@@ -13,7 +13,7 @@ You will be able to:
 * Demonstrate an understanding of the basic architecture and function of a Long Short Term Memory cell
 * Demonstrate an understanding of the basic architecture and function of a Gated Recurrent Unit
 
-### RNNs and Gradient Problems
+## RNNs and Gradient Problems
 
 One of the biggest problems with standard Recurrent Neural Networks is that they get **_Saturated_**. The problem with this it that they use a sigmoid or tanh activation function, and there are large areas of each function where the derivative is very, very close to 0. When the derivatives are low, this means the weight updates are small, which means that the "learning" of the model slows to a crawl! This happens because after many, many weight updates, many weights will have been pushed into an extremely positive or extremely negative value. All we have to do is get past -5 or +5 to get to very small values. 
 
@@ -32,14 +32,14 @@ Notice how the further along the sequence goes, the less overall area the Navy B
 If we were to use a traditional RNN to predict the next word in this sentence, it would likely have trouble figuring out the answer because of the number of time steps between the word to predict and the word that contains the information necessary to make a prediction, "France". 
 
 
-### Remembering and Forgetting
+## Remembering and Forgetting
 
 This is where the modern versions of RNNs come in. In practice, when building models for Sequence Data, people rarely use traditional RNN architectures anymore. Instead they make use of **_LSTMs_** and **_GRUs_**. Both of these models can be thought of as special types of neurons that can be used in an RNN. Although they work a little differently, they have the same strength--the ability to **_forget information_**!  By constantly updating their internal state, they can learn what is important to remember, and when it is okay to forget it. 
 
 Consider the word prediction example we just looked at. We clearly need to remember the word "France", but there are plenty of words in between France and the word we need to predict that aren't that important, and we can safely ignore, such as "during the", "and", "of", etc. Furthermore, let's assume that our model learns enough to answer this question, but the next thousand words in the sequence is about something completely different. Do we really still need to hold on to our information about where Marilyn studied? How can we tell when we need to remember something and when we need to forget something? This is where GRUs and LSTMs have different approaches. Let's take a quick look at how they both work. 
 
 
-### Gated Recurrent Units (GRUs)
+## Gated Recurrent Units (GRUs)
 
 **_Gated Recurrent Units_**, or **_GRUs_**, are a special type of cell that passes along it's internal state at each time step. However, not every part of the internal state is passed along--only the important stuff! GRUs make use of two "gate" functions: a **_Reset Gate_**, which determines what should be removed from the cell's internal state before passing itself along to the next time step, and an **_Update Gate_**, which determines how much of the state from the previous time step should be used in the current time step. 
 
@@ -47,7 +47,7 @@ The following technical diagram shows the internal operations of how a GRU cell 
 
 <img src='gru.png'>
 
-### Long Short Term Memory Cells (LSTMs)
+## Long Short Term Memory Cells (LSTMs)
 
 **_Long Short Term Memory Cells_**, or **_LSTMs_**, are another sort of specialized neurons for use in RNNs that are able to effectively learn what to remember and what to forget in sequence models. 
 
@@ -63,6 +63,6 @@ As you can see, they essentially accomplish the same thing as GRUs--they just do
 
 There's no good answer yet as to whether GRUs or LSTMs are superior to one another. In practice, GRUs tend to have a slight advantage in many use cases, but this is far from guaranteed. In practice, the best thing to do is to build a model with each and see which one does better--which is exactly what we'll do in the next lab!
 
-# Summary
+## Summary
 
 In this lesson, we learned about how LSTMs and GRUs can help our models avoid problems such as vanishing and exploding gradients when working with large sequences of data. We also learned about the structure of LSTMs and GRUs, and how they are able to "forget" information!
