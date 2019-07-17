@@ -17,11 +17,11 @@ You will be able to:
 
 One of the biggest problems with standard Recurrent Neural Networks is that they get **_Saturated_**. The problem with this it that they use a sigmoid or tanh activation function, and there are large areas of each function where the derivative is very, very close to 0. When the derivatives are low, this means the weight updates are small, which means that the "learning" of the model slows to a crawl! This happens because after many, many weight updates, many weights will have been pushed into an extremely positive or extremely negative value. All you have to do is get past -5 or +5 to get to very small values. 
 
-<img src='images/vanishing_gradient.png'>
+<img src='images/new_vanishing_gradient.png'>
 
 When gradients are close to 0 because the values are extremely low, this is called **_Vanishing Gradient_**. Similarly, networks can also get the point where the gradients are much, much too large, resulting in massive weight updates that cause the model to thrash between 1 extremely wrong answer and another. When this happens, it is called **_Exploding Gradient_**. In practice, you can easily solve Exploding Gradients by just "clipping" the weight updates by bounding them at a maximum value. However, there's no good solution for Vanishing Gradients!
 
-An intuitive way to think of this in terms of Information Theory is that happens because the network is trying to contain too much information from all of the time steps. Take a look at the following diagram, which you saw in the previous lesson. Pay attention to the colors that represent each word:
+An intuitive way to think of this in terms of Information Theory&mdash;the network is trying to encapsulate too much information from all of the time steps. Take a look at the following diagram, which you saw in the previous lesson. Pay attention to the colors that represent each word:
 
 <img src='images/unrolled.gif'>
 
@@ -45,7 +45,7 @@ Consider the word prediction example you just looked at. You clearly need to rem
 
 The following technical diagram shows the internal operations of how a GRU cell works. Don't worry about trying to understand what every part of this diagram means&mdash;internally, its just some equations for the Update and Reset operations, coupled with matrix multiplication and sigmoid functions. Instead, focus on the the $S_t$ line, which moves from left to right and denotes the state being updated and passed onto the next layer. 
 
-<img src='images/gru.png'>
+<img src='images/new_gru.png' width="400">
 
 ## Long Short Term Memory Cells (LSTMs)
 
@@ -57,12 +57,17 @@ LSTMs are generally like GRUs, except that they use 3 gates instead of 2. LSTMs 
 * an **_Forget Gate_**, which determines how much of the current state should be forgotten
 * an **_Output Gate_**, which determines how much of the current state should be exposed to the next layers in the network
 
-As you can see, they essentially accomplish the same thing as GRUs&mdash;they just do it in a slightly different way. Both models do a great job learning patterns from sequences, even when they are long and extremely complex! You'll find a diagram of an LSTM cell below. Just like with GRUs, don't worry about what the symbols mean or the math is behind it&mdash;you can always pick that up later if you're curious, although it's not really necessary to know the math to make use the cells in modeling. Instead, try to focus on how the information flows through this diagram from left to right, and where the various gates are for each function performed!
+As you can see, they essentially accomplish the same thing as GRUs&mdash;they just do it in a slightly different way. Both models do a great job learning patterns from sequences, even when they are long and extremely complex! You'll find a diagram of a LSTM cell below. Just like with GRUs, don't worry about what the symbols mean or the math is behind it&mdash;you can always pick that up later if you're curious, although it's not really necessary to know the math to use the cells in modeling. Instead, try to focus on how the information flows through this diagram from left to right, and where the various gates are for each function performed!
 
-<img src='images/LSTM3-chain.png'>
+<img src='images/new_LSTM3_chain.png' width="800">
 
 There's no good answer yet as to whether GRUs or LSTMs are superior to one another. In practice, GRUs tend to have a slight advantage in many use cases, but this is far from guaranteed. In practice, the best thing to do is to build a model with each and see which one does better&mdash;which is exactly what you'll do in the next lab!
 
 ## Summary
 
 In this lesson, you learned about how LSTMs and GRUs can help the models avoid problems such as vanishing and exploding gradients when working with large sequences of data. You also learned about the structure of LSTMs and GRUs, and how they are able to "forget" information!
+
+
+```python
+
+```
