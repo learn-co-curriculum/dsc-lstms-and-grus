@@ -44,7 +44,7 @@ Consider the word prediction example you just looked at. You clearly need to rem
 
 **_Gated Recurrent Units_**, or **_GRUs_**, are a special type of cell that passes along it's internal state at each time step. However, not every part of the internal state is passed along, but only the important stuff! GRUs make use of two "gate" functions: a **_Reset Gate_**, which determines what should be removed from the cell's internal state before passing itself along to the next time step, and an **_Update Gate_**, which determines how much of the state from the previous time step should be used in the current time step. 
 
-The following technical diagram shows the internal operations of how a GRU cell works. Don't worry about trying to understand what every part of this diagram means. Internally, its just some equations for the update and reset operations, coupled with matrix multiplication and sigmoid functions. Instead, focus on the the $S_t$ line, which moves from left to right and denotes the state being updated and passed onto the next layer. 
+The following technical diagram shows the internal operations of how a GRU cell works. Don't worry about trying to understand what every part of this diagram means. Internally, its just some equations for the update and reset operations, coupled with matrix multiplication and sigmoid functions. Instead, focus on the the  <img src="https://render.githubusercontent.com/render/math?math=S_t"> line, which moves from left to right and denotes the state being updated and passed onto the next layer. 
 
 <img src='images/new_gru.png' width="400">
 
